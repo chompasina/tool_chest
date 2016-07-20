@@ -1,0 +1,10 @@
+<div class="tool_info">
+<li>
+  <% @tools.each do |tool| %>
+  <%= link_to tool.name, tool_path(tool), class: 'tool_title', id: "tool_#{tool.id}" %>
+  <%= link_to "Delete", tool_path(tool), method: :delete %>
+  <% end %>
+</li>
+
+  <%=link_to "Create New Tool", new_tool_path %>
+</div>

@@ -1,0 +1,9 @@
+<h1 id=greeting><%="Welcome, #{current_user.username}!"%></h1>
+
+<h2>Your Tools</h2>
+
+    <%= current_user.tools.map do |tool| %>
+      <%= link_to tool.name, user_tool_path(tool) %>
+    <% end %>
+
+    <%= link_to  %>

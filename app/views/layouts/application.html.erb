@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ToolChest</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <p>
+    <% if most_recent_tool.is_a?(Tool) %>
+    <strong>Newest Tool:</strong><%= most_recent_tool.name %>
+    <strong>Current Tool Summary:</strong> <%= current_tool_summary %>
+    <% else %>
+     <%= "No tools have been created."%>
+     <% end %>
+  </p>
+
+<% flash.each do |type, msg| %>
+  <%= content_tag :div, msg, class: "flash_#{type}" %>
+<% end %>
+
+<div>
+  <% if current_user %>
+    <%= link_to "Logout", logout_path, method: :delete %>
+  <% else %>
+    <%= link_to "Login", login_path %>
+  <% end %>
+</div>
+
+<%= yield %>
+
+</body>
+</html>
